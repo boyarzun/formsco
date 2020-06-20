@@ -1,0 +1,41 @@
+{% extends 'generic/base.html' %}
+
+{% block subtitle %}
+    List
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-12 mb-3">
+        <a href="{% url 'forms:create' %}" class="btn btn-primary float-right mb-2" role="button" aria-pressed="true">New</a>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">To</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for form in form_list %}
+            <tr>
+                <td>{{ form.to }}</td>
+                <td>{{ form.subject }}</td>
+                <td>
+                    <a href="{% url "forms:update" form.id %}">Edit</a> -
+                    <a href="{% url "forms:delete" form.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include 'generic/pagination.html' %}
+
+{% endblock %}

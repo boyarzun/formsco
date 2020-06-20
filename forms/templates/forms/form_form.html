@@ -1,0 +1,46 @@
+{% extends 'generic/base.html' %}
+
+{% block subtitle %}
+
+<div class="text-center">
+    {% if action == 'create' %}
+    New Form
+    {% elif action == 'update' %}
+    Update Form
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    {% if action == 'update' %}
+    <div class="col-md-12 order-md-1">
+        <div class="form-group row">
+            <label for="api" class="col-sm-2 col-form-label">API</label>
+            <div class="col-sm-10">
+                <input type="text" readonly class="form-control-plaintext" id="api"
+                    value="{{ host }}{% url "sender:api_v1" object.id %}">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="col-md-12 order-md-1">
+        <form class="needs-validation" novalidate method="post">{% csrf_token %}
+
+            {% include 'form.html' %}
+
+            <div id="result"></div>
+
+            <hr class="mb-4">
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Ready</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

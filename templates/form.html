@@ -1,0 +1,25 @@
+{% for field in form %}
+<div class="mb-3">
+
+    <label for="{{ field.id_for_label }}">
+        {% if field.help_text %}
+        <span class="badge badge-pill badge-secondary" data-toggle="tooltip" data-placement="top"
+            title="{{field.help_text}}">?</span>
+        {% endif %}
+
+            {{ field.label }}
+
+            {% if not field.field.required %}
+            <span class="text-muted">(Optional)</span>
+            {% endif %}
+    </label>
+
+    <input type="text" class="form-control {% if field.errors %}is-invalid{% endif %}" id="{{ field.id_for_label }}"
+        name="{{ field.name }}" placeholder="{{field.field.widget.attrs.placeholder}}"
+        {% if field.value %}value="{{field.value}}" {% endif %} {% if field.field.required %}required{% endif %}>
+
+    <div class="invalid-feedback">
+        {{ field.errors }}
+    </div>
+</div>
+{% endfor %}

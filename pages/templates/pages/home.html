@@ -1,0 +1,79 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>FormsCo - Emails using API</title>
+    <meta name="description" content="Prism is a beautiful Bootstrap 4 template for open-source landing pages." />
+
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=K2D:300,400,500,700,800" rel="stylesheet">
+
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="{% static 'pages/css/bootstrap.css' %}">
+    <link rel="icon" href="{% static 'pages/img/favicon.png' %}">
+</head>
+
+<body>
+
+    <!--Header Section-->
+    <section class="bg-gradient pt-5 pb-6">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 d-flex flex-row align-items-center justify-content-between">
+                    <div class="heading-brand text-white">FormsCo</div>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'forms:list' %}" class="btn btn-dark">My Forms</a>
+                    {% else %}
+                    <a href="{% url 'registration:login' %}" class="btn btn-dark">Log In</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row mt-6">
+                <div class="col-md-8 mx-auto text-center">
+                    <h1 class="text-white">Deliver fast, personalized transactional emails using API</h1>
+                    <p class="lead mb-5 text-light">
+                        Just build a form & post data to your own endpoint. <br>
+                        <small class="text-light">reCAPTCHA compatible</small>
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-9 mx-auto">
+                    <div class="code-window">
+                        <div class="dots">
+                            <div class="red"></div>
+                            <div class="orange"></div>
+                            <div class="green"></div>
+                        </div>
+                        <pre class="language-html line-numbers"
+                            data-src="{% static 'example_form.html' %}"><code class="language-html"></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--footer-->
+    <footer class="py-5 bg-light">
+        <div class="container">
+            <div class="row my-2">
+                <div class="col-md-4 mx-auto text-muted text-center small-xl">
+                    2020 - FormsCo
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'pages/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'pages/js/feather.min.js' %}"></script>
+    <script src="{% static 'pages/js/prism.min.js' %}"></script>
+    <script src="{% static 'pages/js/prism-line-numbers.min.js' %}"></script>
+    <script src="{% static 'pages/js/scripts.js' %}"></script>
+</body>
+
+</html>
