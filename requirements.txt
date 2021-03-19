@@ -9,4 +9,4 @@ whitenoise==5.1.0
 python-dotenv==0.13.0
 dj-database-url==0.5.0
 django-cors-headers==3.4.0
-djangorestframework==3.11.0
+djangorestframework==3.11.2
